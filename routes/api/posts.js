@@ -3,7 +3,6 @@ const auth = require("../../middleware/auth");
 const router = express.Router();
 const { check, validationResult } = require("express-validator/check");
 const Post = require("../../model/Post");
-const Profile = require("../../model/Profile");
 const User = require("../../model/User");
 
 //@route POST api/posts
@@ -108,8 +107,8 @@ router.put("/like/:id", auth, async (req, res) => {
       //post liked or not
 
       if (
-        post.likes.filter((like) => String(like.user) === req.user.id)
-          .length > 0
+        post.likes.filter((like) => String(like.user) === req.user.id).length >
+        0
       ) {
         return res.status(400).json({ msg: "Post already liked" });
       } else {
@@ -146,9 +145,10 @@ router.put("/unlike/:id", auth, async (req, res) => {
       ) {
         return res.status(400).json({ msg: "Post has  not liked by you" });
       } else {
-
-        let rmIndex = post.likes.map(like => like.user.toString()).indexOf(req.user.id);
-        post.likes.splice(rmIndex, 1)
+        let rmIndex = post.likes
+          .map((like) => like.user.toString())
+          .indexOf(req.user.id);
+        post.likes.splice(rmIndex, 1);
 
         await post.save();
 
@@ -163,7 +163,6 @@ router.put("/unlike/:id", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
 
 //@route POST api/posts/comments/:id
 //@desc  Create a comments
@@ -199,32 +198,35 @@ router.post(
 //@route DELETE api/posts/comments/:id/:comment_id
 //@desc  Delete a comments
 //@access Private
-router.delete('/comments/:id/:comment_id', auth, async (req, res) => {
+router.delete("/comments/:id/:comment_id", auth, async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
 
     //Pull the comment
-    let comment = post.comments.find(comment => comment.id === req.params.comment_id);
+    let comment = post.comments.find(
+      (comment) => comment.id === req.params.comment_id
+    );
 
     //Make sure comment exists
     if (!comment) {
       return res.status(404).json({ msg: "Comment not Found" });
     }
-    //Check user 
+    //Check user
     if (comment.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Permission Denied" });
     }
 
-    let rmIndex = post.comments.map(comment => comment.id.toString()).indexOf(comment.id);
-    post.comments.splice(rmIndex, 1)
+    let rmIndex = post.comments
+      .map((comment) => comment.id.toString())
+      .indexOf(comment.id);
+    post.comments.splice(rmIndex, 1);
 
     await post.save();
 
     res.json(post.comments);
-
   } catch (error) {
     console.error(error.message);
     res.status(500).send("server error");
   }
-})
+});
 module.exports = router;
