@@ -25,7 +25,7 @@ app.use("/api/posts", postsRoutes);
 app.use("/api/auth", authRoutes);
 
 // Sever config
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.SERVER_PORT || 5000;
 
 app.listen(PORT, (err) => {
   if (err) {
