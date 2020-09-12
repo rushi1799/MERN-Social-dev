@@ -27,12 +27,12 @@ function App() {
       <BrowserRouter>
         <Fragment>
           <NavBar />
-
-          <Route exact path="/" component={Landing} />
-
           <Switch>
+            <Route exact path="/" component={Landing} />
+
             <section className="container">
               <Alert />
+
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
             </section>
