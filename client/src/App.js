@@ -12,7 +12,10 @@ function App() {
   return (
     <Fragment>
       <NavBar />
-      <Alert />
+      <section className="container">
+        <Alert />
+      </section>
+
       <Route exact path="/" component={Landing} />
 
       <Switch>
