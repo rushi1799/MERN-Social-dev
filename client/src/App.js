@@ -2,16 +2,18 @@ import React, { Fragment, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
-import { loadUser } from "./actions/auth";
+
 import NavBar from "./components/layouts/NavBar";
 import Landing from "./components/layouts/Landing";
-
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import setAuthToken from "./utils/setAuthToken";
+import Dashboard from "./components/dashboard/Dashboard";
 import Alert from "./components/layouts/Alert";
+import PrivateRoute from "./components/routes/PrivateRoute";
 
+import setAuthToken from "./utils/setAuthToken";
+import store from "./store";
+import { loadUser } from "./actions/auth";
 import "./App.css";
 
 if (localStorage.token) {
@@ -27,16 +29,15 @@ function App() {
       <BrowserRouter>
         <Fragment>
           <NavBar />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-
-            <section className="container">
-              <Alert />
-
+          <Route exact path="/" component={Landing} />
+          <section className="container">
+            <Alert />
+            <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-            </section>
-          </Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+          </section>
         </Fragment>
       </BrowserRouter>
     </Provider>
