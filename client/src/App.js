@@ -6,10 +6,11 @@ import store from "./store";
 import { loadUser } from "./actions/auth";
 import NavBar from "./components/layouts/NavBar";
 import Landing from "./components/layouts/Landing";
-import Alert from "./components/layouts/Alert";
+
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import setAuthToken from "./utils/setAuthToken";
+import Alert from "./components/layouts/Alert";
 
 import "./App.css";
 
@@ -26,15 +27,15 @@ function App() {
       <BrowserRouter>
         <Fragment>
           <NavBar />
-          <section className="container">
-            <Alert />
-          </section>
 
           <Route exact path="/" component={Landing} />
 
           <Switch>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            <section className="container">
+              <Alert />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </section>
           </Switch>
         </Fragment>
       </BrowserRouter>
