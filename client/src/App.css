@@ -44,14 +44,6 @@ img {
   margin-top: 6rem;
   margin-bottom: 3rem;
 }
-.container-y {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
-}
 
 /* Text Styles*/
 .x-large {
@@ -159,7 +151,7 @@ img {
 
 .alert {
   padding: 0.8rem;
-  margin: 1rem 0;
+  margin: 0;
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
