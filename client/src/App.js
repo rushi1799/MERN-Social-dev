@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
+import PrivateRoute from "./components/routes/PrivateRoute";
+import Alert from "./components/layouts/Alert";
 import NavBar from "./components/layouts/NavBar";
 import Landing from "./components/layouts/Landing";
 import Login from "./components/auth/Login";
@@ -12,8 +14,7 @@ import CreateProfile from "./components/profile_forms/CreateProfile";
 import EditProfile from "./components/profile_forms/EditProfile";
 import AddExperience from "./components/profile_forms/AddExperience";
 import AddEducation from "./components/profile_forms/AddEducation";
-import Alert from "./components/layouts/Alert";
-import PrivateRoute from "./components/routes/PrivateRoute";
+import Profiles from "./components/profiles/Profiles";
 
 import setAuthToken from "./utils/setAuthToken";
 import store from "./store";
@@ -39,6 +40,7 @@ function App() {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/developers" component={Profiles} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
