@@ -8,6 +8,7 @@ import Landing from "./components/layouts/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./components/profile_forms/CreateProfile";
 import Alert from "./components/layouts/Alert";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
@@ -36,6 +37,11 @@ function App() {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create_profile"
+                component={CreateProfile}
+              />
             </Switch>
           </section>
         </Fragment>
