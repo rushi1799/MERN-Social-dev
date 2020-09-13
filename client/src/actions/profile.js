@@ -54,7 +54,7 @@ export const getProfileById = (userId) => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
-    dispatch({ type: GET_PROFILES, payload: res.data });
+    dispatch({ type: GET_PROFILE, payload: res.data });
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

@@ -15,6 +15,7 @@ import EditProfile from "./components/profile_forms/EditProfile";
 import AddExperience from "./components/profile_forms/AddExperience";
 import AddEducation from "./components/profile_forms/AddEducation";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 
 import setAuthToken from "./utils/setAuthToken";
 import store from "./store";
@@ -41,6 +42,7 @@ function App() {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/developers" component={Profiles} />
+              <Route exact path="/profile/:id" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
