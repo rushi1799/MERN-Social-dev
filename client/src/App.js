@@ -10,6 +10,8 @@ import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile_forms/CreateProfile";
 import EditProfile from "./components/profile_forms/EditProfile";
+import AddExperience from "./components/profile_forms/AddExperience";
+import AddEducation from "./components/profile_forms/AddEducation";
 import Alert from "./components/layouts/Alert";
 import PrivateRoute from "./components/routes/PrivateRoute";
 
@@ -47,6 +49,16 @@ function App() {
                 exact
                 path="/edit_profile"
                 component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/add_experience"
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path="/add_education"
+                component={AddEducation}
               />
             </Switch>
           </section>
