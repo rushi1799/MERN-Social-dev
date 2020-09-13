@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCurrentProfile } from "../../actions/profile";
 import Spinner from "../layouts/Spinner";
+import DashboardActions from "./DashboardActions";
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
@@ -24,18 +25,7 @@ const Dashboard = ({
       </p>
       {profile !== null ? (
         <Fragment>
-          <div className="dash-buttons">
-            <a href="edit-profile.html" className="btn btn-light">
-              <i className="fas fa-user-circle text-primary"></i> Edit Profile
-            </a>
-            <a href="add-experience.html" className="btn btn-light">
-              <i className="fab fa-black-tie text-primary"></i> Add Experience
-            </a>
-            <a href="add-education.html" className="btn btn-light">
-              <i className="fas fa-graduation-cap text-primary"></i> Add
-              Education
-            </a>
-          </div>
+          <DashboardActions />
           <h2 className="my-2">Experience Credentials</h2>
           <table className="table">
             <thead>
