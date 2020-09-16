@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layouts/Spinner";
 import PostItem from "../posts/PostItem";
+import CommentFrom from "./CommentForm";
 import { getPost } from "../../actions/post";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
@@ -18,6 +19,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
         BacK To Post
       </Link>
       <PostItem post={post} showActions={false} />
+      <CommentFrom postId={post._id} />
     </Fragment>
   );
 };
