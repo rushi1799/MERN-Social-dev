@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getRepos } from "../../actions/profile";
-import Spinner from "../layouts/Spinner";
-
 const ProfileGitRepos = ({ getRepos, username, repos, loading }) => {
   useEffect(() => {
     getRepos(username);
