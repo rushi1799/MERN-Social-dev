@@ -8,6 +8,7 @@ import {
   ACCOUNT_DELETE,
   CLEAR_PROFILE,
   GET_REPOS,
+  REPOS_ERROR,
 } from "./types";
 
 //Get current users profile
@@ -44,7 +45,7 @@ export const getRepos = (username) => async (dispatch) => {
     dispatch({ type: GET_REPOS, payload: res.data });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: REPOS_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

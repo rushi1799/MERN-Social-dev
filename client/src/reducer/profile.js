@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  REPOS_ERROR,
 } from "../actions/types";
 
 const initialState = {
@@ -51,6 +52,12 @@ export default function (state = initialState, action) {
         ...state,
         repos: payload,
         loading: false,
+      };
+    case REPOS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
       };
     default:
       return state;
